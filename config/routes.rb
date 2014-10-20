@@ -1,4 +1,19 @@
 GaSchedulePlanner::Application.routes.draw do
+  resources :locations
+
+
+  match '/courses(/:year(/:month))' => 'courses#index', :as => :courses, :constraints => {:year => /\d{4}/, :month => /\d{1,2}/}
+
+  resources :users
+
+
+  resources :programmes
+
+
+  resources :classrooms
+
+  match '/calendar(/:year(/:month))' => 'calendar#index', :as => :calendar, :constraints => {:year => /\d{4}/, :month => /\d{1,2}/}
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
