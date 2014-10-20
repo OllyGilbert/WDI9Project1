@@ -5,6 +5,11 @@ class CreateCourses < ActiveRecord::Migration
       t.datetime :start_at
       t.datetime :end_at
       t.boolean :all_day, :default => false
+      t.integer :programme_id
+      t.integer :classroom_id
+      t.decimal :price
+      t.text :description
+      t.text :notes
       
       t.timestamps
     end

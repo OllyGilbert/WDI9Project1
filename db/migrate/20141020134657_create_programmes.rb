@@ -1,7 +1,7 @@
 class CreateProgrammes < ActiveRecord::Migration
   def change
     create_table :programmes do |t|
-      t.integer :course_ids
+      t.string :name
 
       t.timestamps
     end

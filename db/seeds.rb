@@ -18,7 +18,7 @@
 # programme2 = Programme.create!(name: 'Digital Marketing', course_ids: [])
 
 # course1 = Course.create!(name: 'WDI9', programme_id: programme1.id)
-# course2 = Course.create!(name: 'Digital Marketing 5')
+# course2 = Course.create!(name: 'Digital Marketing 5', programme_id: programme2.id)
 
 # classroom1 = Classroom.create!(name: 'Classroom 1', campus_id: location1.id, capacity: 22, course_ids: [course1.id, course2.id])
 
