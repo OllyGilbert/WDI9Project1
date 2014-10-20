@@ -1,3 +1,6 @@
 class Classroom < ActiveRecord::Base
-  attr_accessible :campus_id, :capacity, :course_ids, :name
+  attr_accessible :capacity, :location_id, :name
+
+  belongs_to :location, dependent: :destroy
+  has_many :courses
 end
