@@ -11,11 +11,11 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20141020153607) do
+ActiveRecord::Schema.define(:version => 20141020192642) do
 
   create_table "classrooms", :force => true do |t|
-    t.integer  "location_id"
     t.string   "name"
+    t.integer  "location_id"
     t.integer  "capacity"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
@@ -57,8 +57,9 @@ ActiveRecord::Schema.define(:version => 20141020153607) do
   create_table "users", :force => true do |t|
     t.string   "name"
     t.string   "role"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.string   "password_digest"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
   end
 
 end
