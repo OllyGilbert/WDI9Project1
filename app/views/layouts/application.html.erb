@@ -10,6 +10,27 @@
 </head>
 <body>
 
+<nav>
+  <ul>
+    <li>
+      <%=link_to 'locations', locations_path %>
+    </li>
+    <li>
+      <%=link_to 'classrooms', classrooms_path %>
+    </li>
+    <li>
+      <%=link_to 'courses', courses_path %>
+    </li>
+    <li>
+      <%=link_to 'users', users_path %>
+    </li>
+    <li>
+      <%=link_to 'programmes', programmes_path %>
+    </li>
+
+  </ul>
+</nav>
+
 <%= yield %>
 
 </body>
