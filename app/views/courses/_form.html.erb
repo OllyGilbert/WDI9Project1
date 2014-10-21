@@ -27,14 +27,17 @@
     <%= f.label :genre %><br />
     <%= f.text_field :genre %>
   </div>
-  <div class="field">
-    <%= f.label :programme_id %><br />
-    <%= f.number_field :programme_id %>
+  <div>
+    <%= f.collection_select :programme_id, Programme.all, :id, :name %>
   </div>
-  <div class="field">
-    <%= f.label :classroom_id %><br />
-    <%= f.number_field :classroom_id %>
-  </div>  
+  <div>
+    <% unless @course.new_record?%>
+    <%= f.collection_select :course, :classroom_id, Classroom.where(location_id: @course.classroom.location.id), :id, :name %>
+    <% else %>
+    <%= grouped_collection_select(:course, :classroom_id, Location.all, :classrooms, :name, :id, :name) %>
+    <% end %>
+  </div>
+
   <div class="field">
     <%= f.label :price %><br />
     <%= f.text_field :price %>
