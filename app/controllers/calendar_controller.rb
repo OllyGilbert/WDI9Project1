@@ -2,10 +2,12 @@ class CalendarController < ApplicationController
   
   def index
     Course.all.each do |course|
-    Event.create(name: course.name,
-      start_at: course.start_at,
-      end_at: course.end_at, 
-      course_id: course.id)
+      unless Event.where(id: course.id).present?
+        Event.create(name: course.name,
+          start_at: course.start_at,
+          end_at: course.end_at, 
+          course_id: course.id)
+      end
     end
   
 
