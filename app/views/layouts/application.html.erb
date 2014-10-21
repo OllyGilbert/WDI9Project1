@@ -8,8 +8,18 @@
   <%= javascript_include_tag "public/javascripts/event_calendar.js" %>
   <%= csrf_meta_tags %>
 </head>
-<body>
-
+<header>
+  <% if current_user %>
+    <p>hello <%= current_user.email %></p>
+  <% end %>
+  <p>
+  <%= link_to 'log me out!', logout_path %>
+  </p>
+  <% flash.each do |name, msg| %>
+  <div class="flash-message flash-message-<%= name %>">
+    <%= msg %>
+  </div>
+  <% end %>
 <nav>
   <ul>
     <li>
@@ -27,9 +37,13 @@
     <li>
       <%=link_to 'programmes', programmes_path %>
     </li>
-
   </ul>
 </nav>
+
+</header>
+<body>
+
+
 
 <%= yield %>
 

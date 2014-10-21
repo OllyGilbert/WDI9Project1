@@ -1,12 +1,14 @@
 GaSchedulePlanner::Application.routes.draw do
-  resources :courses
 
+  resources :sessions
+
+  get 'logout', to: 'sessions#destroy', as: 'logout'
+
+  resources :courses
 
   resources :programmes
 
-
   resources :classrooms
-
 
   resources :locations
   match '/courses(/:year(/:month))' => 'courses#index', :as => :courses, :constraints => {:year => /\d{4}/, :month => /\d{1,2}/}
@@ -64,7 +66,7 @@ GaSchedulePlanner::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  # root :to => 'welcome#index'
+  root :to => 'locations#index'
 
   # See how all your routes lay out with "rake routes"
 

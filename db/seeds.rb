@@ -12,9 +12,9 @@
 #programmes
 #users
 
-u1 = User.create!(name: 'Olly', role: 'student', email: 'olly@email.com')
-u2 = User.create!(name: 'Mathilda', role: 'instructor', email: 'mathilda@email.com')
-u3 = User.create!(name: 'Lexi', role: 'producer', email: 'lexi@email.com')
+u1 = User.create!(name: 'Olly', role: 'student', password: 'password', email: 'olly@email.com')
+u2 = User.create!(name: 'Mathilda', role: 'instructor', password: 'password', email: 'mathilda@email.com')
+u3 = User.create!(name: 'Lexi', role: 'producer', password: 'password', email: 'lexi@email.com')
 
 location1 = Location.create!(name: 'GA London @ White Bear Yard', address: '9 Back Hill', city: 'London')
 
@@ -27,6 +27,9 @@ course1 = Course.create!(name: 'WDI9', start_at: '22/09/2014', end_at: '12/12/20
 
 course2 = Course.create!(name: 'DM5', start_at: '26/08/2014', end_at: '11/14/2014', genre: "evening", programme_id: programme2.id, classroom_id: classroom1.id, price: 2400, description: "General Assembly's part time digital marketing course")
 
+course1.instructors << u2
+course1.students << u1
+course1.producers << u3
 
 
 
