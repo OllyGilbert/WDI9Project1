@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  start_at: 2014-10-21 12:22:11
+  end_at: 2014-10-21 12:22:11
+  genre: MyString
+  programme_id: 1
+  classroom_id: 1
+  price: 9.99
+  description: MyText
+
+two:
+  name: MyString
+  start_at: 2014-10-21 12:22:11
+  end_at: 2014-10-21 12:22:11
+  genre: MyString
+  programme_id: 1
+  classroom_id: 1
+  price: 9.99
+  description: MyText

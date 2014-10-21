@@ -1,18 +1,19 @@
 class CoursesController < ApplicationController
-  
+  # GET /courses
+  # GET /courses.json
   def index
-    @month = (params[:month] || (Time.zone || Time).now.month).to_i
-    @year = (params[:year] || (Time.zone || Time).now.year).to_i
+    @courses = Course.all
 
-    @shown_month = Date.civil(@year, @month)
-
-    @event_strips = Course.event_strips_for_month(@shown_month)
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @courses }
+    end
   end
-  
+
   # GET /courses/1
   # GET /courses/1.json
   def show
-    @course = course.find(params[:id])
+    @course = Course.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -23,7 +24,7 @@ class CoursesController < ApplicationController
   # GET /courses/new
   # GET /courses/new.json
   def new
-    @course = course.new
+    @course = Course.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -33,17 +34,17 @@ class CoursesController < ApplicationController
 
   # GET /courses/1/edit
   def edit
-    @course = course.find(params[:id])
+    @course = Course.find(params[:id])
   end
 
   # POST /courses
   # POST /courses.json
   def create
-    @course = course.new(params[:course])
+    @course = Course.new(params[:course])
 
     respond_to do |format|
       if @course.save
-        format.html { redirect_to @course, notice: 'course was successfully created.' }
+        format.html { redirect_to @course, notice: 'Course was successfully created.' }
         format.json { render json: @course, status: :created, location: @course }
       else
         format.html { render action: "new" }
@@ -55,11 +56,11 @@ class CoursesController < ApplicationController
   # PUT /courses/1
   # PUT /courses/1.json
   def update
-    @course = course.find(params[:id])
+    @course = Course.find(params[:id])
 
     respond_to do |format|
       if @course.update_attributes(params[:course])
-        format.html { redirect_to @course, notice: 'course was successfully updated.' }
+        format.html { redirect_to @course, notice: 'Course was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -71,7 +72,7 @@ class CoursesController < ApplicationController
   # DELETE /courses/1
   # DELETE /courses/1.json
   def destroy
-    @course = course.find(params[:id])
+    @course = Course.find(params[:id])
     @course.destroy
 
     respond_to do |format|

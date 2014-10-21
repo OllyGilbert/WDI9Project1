@@ -1,4 +1,7 @@
 GaSchedulePlanner::Application.routes.draw do
+  resources :courses
+
+
   resources :programmes
 
 
@@ -6,9 +9,6 @@ GaSchedulePlanner::Application.routes.draw do
 
 
   resources :locations
-
-  resources :courses
-
   match '/courses(/:year(/:month))' => 'courses#index', :as => :courses, :constraints => {:year => /\d{4}/, :month => /\d{1,2}/}
 
   resources :users
