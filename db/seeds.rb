@@ -21,11 +21,11 @@ location1 = Location.create!(name: 'GA London @ White Bear Yard', address: '9 Ba
 programme1 = Programme.create!(name: 'WDI')
 programme2 = Programme.create!(name: 'Digital Marketing')
 
-# course2 = Course.create!(name: 'Digital Marketing 5', programme_id: programme2.id)
-
 classroom1 = Classroom.create!(name: 'Classroom 1', location_id: location1.id, capacity: 22)
 
 course1 = Course.create!(name: 'WDI9', start_at: '22/09/2014', end_at: '12/12/2014', all_day: true, programme_id: programme1.id, classroom_id: classroom1.id, price: 8000, description: "General Assembly's flagship Web Development Immersive", notes: "")
+
+course2 = Course.create!(name: 'DM5', start_at: '26/08/2014', end_at: '11/14/2014', all_day: true, programme_id: programme2.id, classroom_id: classroom1.id, price: 2400, description: "General Assembly's part time digital marketing course", notes: "")
 
 
 
