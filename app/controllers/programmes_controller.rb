@@ -1,6 +1,7 @@
 class ProgrammesController < ApplicationController
   # GET /programmes
   # GET /programmes.json
+  authorize_resource
   def index
     @programmes = Programme.all
 

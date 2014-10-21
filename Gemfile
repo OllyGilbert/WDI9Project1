@@ -16,8 +16,10 @@ group :development, :test do
 end
 
 # Event_Calendar
-
 gem 'event-calendar', :require => 'event_calendar'
+
+# CanCanCan for user authorisation
+gem 'cancancan', '~> 1.9'
 
 # Gems used only for assets and not required
 # in production environments by default.

@@ -1,6 +1,7 @@
 class CoursesController < ApplicationController
   # GET /courses
   # GET /courses.json
+  authorize_resource
   def index
     @courses = Course.all
 
