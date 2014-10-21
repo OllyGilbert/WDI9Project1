@@ -12,9 +12,9 @@
 #programmes
 #users
 
-u1 = User.create! name: 'Olly', role: 'student'
-u2 = User.create! name: 'Mathilda', role: 'instructor'
-u3 = User.create! name: 'Lexi', role: 'producer'
+u1 = User.create!(name: 'Olly', role: 'student', email: 'olly@email.com')
+u2 = User.create!(name: 'Mathilda', role: 'instructor', email: 'mathilda@email.com')
+u3 = User.create!(name: 'Lexi', role: 'producer', email: 'lexi@email.com')
 
 location1 = Location.create!(name: 'GA London @ White Bear Yard', address: '9 Back Hill', city: 'London')
 
