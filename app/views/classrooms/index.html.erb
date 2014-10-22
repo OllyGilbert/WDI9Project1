@@ -15,9 +15,21 @@
     <td><%= classroom.name %></td>
     <td><%= classroom.location_id %></td>
     <td><%= classroom.capacity %></td>
-    <td><%= link_to 'Show', classroom %></td>
-    <td><%= link_to 'Edit', edit_classroom_path(classroom) %></td>
-    <td><%= link_to 'Destroy', classroom, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td>
+      <% if can? :show, classroom %>
+        <%= link_to 'Show', classroom %>
+      <% end %>
+    </td>
+    <td>
+      <% if can? :update, classroom %>
+        <%= link_to 'Edit', edit_classroom_path(classroom) %>
+      <% end %>
+    </td>
+    <td>
+      <% if can? :destroy, classroom %>
+        <%= link_to 'Destroy', classroom, method: :delete, data: { confirm: 'Are you sure?' } %>
+      <% end %>
+    </td>
   </tr>
 <% end %>
 </table>

@@ -1,5 +1,7 @@
 GaSchedulePlanner::Application.routes.draw do
 
+  get "welcome/index"
+
   resources :sessions
 
   get 'logout', to: 'sessions#destroy', as: 'logout'
@@ -67,7 +69,7 @@ GaSchedulePlanner::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => 'locations#index'
+  root :to => 'welcome#index'
 
   # See how all your routes lay out with "rake routes"
 

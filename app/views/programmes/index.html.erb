@@ -11,9 +11,21 @@
 <% @programmes.each do |programme| %>
   <tr>
     <td><%= programme.name %></td>
-    <td><%= link_to 'Show', programme %></td>
-    <td><%= link_to 'Edit', edit_programme_path(programme) %></td>
-    <td><%= link_to 'Destroy', programme, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td>
+      <% if can? :show, programme %>
+        <%= link_to 'Show', programme %>
+      <% end %>
+    </td>
+    <td>
+      <% if can? :update, programme %>
+        <%= link_to 'Edit', edit_programme_path(programme) %>
+      <% end %>
+    </td>
+    <td>
+      <% if can? :destroy, programme %>
+        <%= link_to 'Destroy', programme, method: :delete, data: { confirm: 'Are you sure?' } %>
+      <% end %>
+    </td>
   </tr>
 <% end %>
 </table>

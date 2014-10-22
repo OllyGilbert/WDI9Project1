@@ -25,9 +25,22 @@
     <td><%= course.classroom_id %></td>
     <td><%= course.price %></td>
     <td><%= course.description %></td>
-    <td><%= link_to 'Show', course %></td>
-    <td><%= link_to 'Edit', edit_course_path(course) %></td>
-    <td><%= link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
+    <td>
+      <% if can? :show, course %>
+        <%= link_to 'Show', course %>
+      <% end %>
+    </td>
+    <td>
+      <% if can? :update, course %>
+        <%= link_to 'Edit', edit_course_path(course) %>
+      <% end %>
+    </td>
+    <td>
+      <% if can? :destroy, course %>
+        <%= link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' } %>
+      <% end %>
+    </td>
   </tr>
 <% end %>
 </table>

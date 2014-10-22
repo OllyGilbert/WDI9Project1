@@ -15,9 +15,22 @@
     <td><%= location.name %></td>
     <td><%= location.address %></td>
     <td><%= location.city %></td>
-    <td><%= link_to 'Show', location %></td>
-    <td><%= link_to 'Edit', edit_location_path(location) %></td>
-    <td><%= link_to 'Destroy', location, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
+    <td>
+      <% if can? :show, location %>
+        <%= link_to 'Show', location %>
+      <% end %>
+    </td>
+    <td>
+      <% if can? :update, location %>
+        <%= link_to 'Edit', edit_location_path(location) %>
+      <% end %>
+    </td>
+    <td>
+      <% if can? :destroy, location %>
+        <%= link_to 'Destroy', location, method: :delete, data: { confirm: 'Are you sure?' } %>
+      <% end %>
+    </td>
   </tr>
 <% end %>
 </table>
