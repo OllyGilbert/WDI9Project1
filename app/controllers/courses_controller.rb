@@ -26,7 +26,6 @@ class CoursesController < ApplicationController
   # GET /courses/new.json
   def new
     @course = Course.new
-
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @course }
@@ -45,7 +44,7 @@ class CoursesController < ApplicationController
 
     respond_to do |format|
       if @course.save
-        format.html { redirect_to @course, notice: 'Course was successfully created.' }
+        format.html { render action: "populate_course", notice: 'Course was successfully created.' }
         format.json { render json: @course, status: :created, location: @course }
       else
         format.html { render action: "new" }

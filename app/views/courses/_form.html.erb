@@ -11,10 +11,23 @@
     </div>
   <% end %>
 
+  <div>
+    <%= f.collection_select :programme_id, Programme.all, :id, :name %>
+  </div>
   <div class="field">
     <%= f.label :name %><br />
     <%= f.text_field :name %>
   </div>
+
+  <div class="field">
+    <%= f.radio_button(:genre, "immersive") %>
+    <%= f.label(:genre, "immersive") %>
+    <%= f.radio_button(:genre, "evening") %>
+    <%= f.label(:genre, "evening") %>
+    <%= f.radio_button(:genre, "weekend") %>
+    <%= f.label(:genre, "weekend") %>
+  </div>
+
   <div class="field">
     <%= f.label :start_at %><br />
     <%= f.datetime_select :start_at %>
@@ -23,22 +36,8 @@
     <%= f.label :end_at %><br />
     <%= f.datetime_select :end_at %>
   </div>
-  <div class="field">
-    <%= f.label :genre %><br />
-    <%= f.text_field :genre %>
-  </div>
-  <div>
-    <%= f.collection_select :programme_id, Programme.all, :id, :name %>
-  </div>
-  <div>
-    <% unless @course.new_record?%>
-    <%= f.collection_select :course, :classroom_id, Classroom.where(location_id: @course.classroom.location.id), :id, :name %>
-    <% else %>
-    <%= grouped_collection_select(:course, :classroom_id, Location.all, :classrooms, :name, :id, :name) %>
-    <% end %>
-  </div>
 
-  <div class="field">
+  <div class="field">§
     <%= f.label :price %><br />
     <%= f.text_field :price %>
   </div>

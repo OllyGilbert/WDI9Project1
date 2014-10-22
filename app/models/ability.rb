@@ -10,6 +10,8 @@ class Ability
     else
         can :read, User
         can :read, Location
+        can :read, Courses
+        can :read, Programmes
         can :create, User
         can :update, User do |user|
             current_user.id == user.id

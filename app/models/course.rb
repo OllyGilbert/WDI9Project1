@@ -10,4 +10,21 @@ class Course < ActiveRecord::Base
   has_and_belongs_to_many :students, class_name: "User", conditions: ["role=?", "student"]
   has_and_belongs_to_many :instructors, class_name: "User", conditions: ["role=?", "instructor"]
   has_and_belongs_to_many :producers, class_name: "User", conditions: ["role=?", "producer"]
+
+  def available_classrooms
+    classrooms_one = Course.where(start_at: (self.start_at..self.end_at)).where(genre: self.genre).reject do |course|
+        course.id == self.id
+      end.pluck(:classroom_id)
+    classrooms_two = Course.where(end_at: (self.start_at..self.end_at)).where(genre: self.genre).reject do |course|
+        course.id == self.id
+      end.pluck(:classroom_id)
+    binding.pry
+    unavailable_classroom_ids = classrooms_one + classrooms_two
+    #Removing all of the unavailable classrooms from the classrooms array;
+    available_classrooms = Classroom.all.reject do |classroom|
+      unavailable_classroom_ids.include? classroom.id
+    end
+  end
+
+
 end

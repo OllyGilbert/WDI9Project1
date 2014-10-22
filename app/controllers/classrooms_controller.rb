@@ -26,7 +26,7 @@ class ClassroomsController < ApplicationController
   # GET /classrooms/new.json
   def new
     @classroom = Classroom.new
-
+    
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @classroom }
