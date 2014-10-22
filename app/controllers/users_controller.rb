@@ -4,7 +4,9 @@ class UsersController < ApplicationController
   # GET /users.json
 
   def index
-    @users = User.all
+    @q = User.search(params[:q])
+    @users = @q.result(distinct: true)
+    @q.build_condition
 
     respond_to do |format|
       format.html # index.html.erb

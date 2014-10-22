@@ -3,7 +3,11 @@ class ClassroomsController < ApplicationController
   # GET /classrooms.json
   authorize_resource
   def index
-    @classrooms = Classroom.all
+    @q = Classroom.search(params[:q])
+    @classrooms = @q.result(distinct: true)
+    @q.build_condition
+
+    #@classrooms = Classroom.all
 
     respond_to do |format|
       format.html # index.html.erb

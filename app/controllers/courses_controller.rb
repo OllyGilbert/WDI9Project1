@@ -3,7 +3,9 @@ class CoursesController < ApplicationController
   # GET /courses.json
   authorize_resource
   def index
-    @courses = Course.all
+    @q = Course.search(params[:q])
+    @courses = @q.result(distinct: true)
+    @q.build_condition
 
     respond_to do |format|
       format.html # index.html.erb

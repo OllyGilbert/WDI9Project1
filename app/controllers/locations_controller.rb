@@ -3,7 +3,9 @@ class LocationsController < ApplicationController
   # GET /locations.json
   authorize_resource
   def index
-    @locations = Location.all
+    @q = Location.search(params[:q])
+    @locations = @q.result(distinct: true)
+    @q.build_condition
 
     respond_to do |format|
       format.html # index.html.erb

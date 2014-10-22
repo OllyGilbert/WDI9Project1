@@ -3,7 +3,9 @@ class ProgrammesController < ApplicationController
   # GET /programmes.json
   authorize_resource
   def index
-    @programmes = Programme.all
+    @q = Programme.search(params[:q])
+    @programmes = @q.result(distinct: true)
+    @q.build_condition
 
     respond_to do |format|
       format.html # index.html.erb
