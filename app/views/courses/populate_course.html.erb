@@ -11,10 +11,6 @@
     </div>
   <% end %>
 
-  <div class="field">
-     <%= f.collection_select :classroom_id, Course.all, :id, :name %>
-  </div>
-
   <div>
      <% User.where(role: 'instructor').each do |instructor| %>
        <%= check_box_tag "course[instructor_ids][]", instructor.id, @course.instructors.include?(instructor), id: "course_instructor_ids_#{instructor.id}" %>
@@ -22,16 +18,14 @@
      <% end %>
   </div>
 
-<<<<<<< Updated upstream
   <div>
      <% User.where(role: 'student').each do |student| %>
        <%= check_box_tag "course[student_ids][]", student.id, @course.students.include?(student), id: "course_student_ids_#{student.id}" %>
        <%= f.label :student_ids, student.name, for: "course_student_ids_#{student.id}" %>
      <% end %>
-=======
+
   <div class="field">
      <%= f.collection_select :classroom_id, @course.available_classrooms, :id, :name %>
->>>>>>> Stashed changes
   </div>
 
   <div class="actions">

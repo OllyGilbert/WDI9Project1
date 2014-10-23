@@ -42,19 +42,13 @@ programme1 = Programme.create!(name: 'WDI', description: "General Assembly's fla
 programme2 = Programme.create!(name: 'Digital Marketing', description: "General Assembly's part time digital marketing course")
 
 classroom1 = Classroom.create!(name: 'Classroom 1', location_id: location1.id, capacity: 22)
-<<<<<<< Updated upstream
-classroom1 = Classroom.create!(name: 'Classroom 2', location_id: location1.id, capacity: 22)
-=======
+
 classroom2 = Classroom.create!(name: 'Classroom 2', location_id: location1.id, capacity: 22)
->>>>>>> Stashed changes
 
 course1 = Course.create!(name: 'WDI9', start_at: '22/09/2014', end_at: '12/12/2014', genre: "immersive", programme_id: programme1.id, classroom_id: classroom1.id, price: 8000, description: "General Assembly's 9th Web Development Immersive in London")
 
-<<<<<<< Updated upstream
-course2 = Course.create!(name: 'DM5', start_at: '26/08/2014', end_at: '11/14/2014', genre: "evening", programme_id: programme2.id, classroom_id: classroom1.id, price: 2400, description: "General Assembly's 5th part time digital marketing course in London")
-=======
 course2 = Course.create!(name: 'DM5', start_at: '26/08/2014', end_at: '11/14/2014', genre: "evening", programme_id: programme2.id, classroom_id: classroom2.id, price: 2400, description: "General Assembly's part time digital marketing course")
->>>>>>> Stashed changes
+
 
 course1.instructors << [i1, i2, i3, i4]
 course1.students << [s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11, s12, s13, s14]
