@@ -15,11 +15,16 @@
   <%= @user.email %>
 </p>
 
+<div>
+<% if can? :update, @user %>
+  <%= link_to 'Edit', edit_user_path(@user) %>
+<% end %>
+</div>
 
-<%= link_to 'Edit', edit_user_path(@user) %>
-<%#= link_to 'Delete', destroy_user_path(@user) %>
-
-<%#= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %>
-
+<div>
+<% if can? :destroy, @user %>
+  <%= link_to 'Destroy', @user, method: :delete, data: { confirm: 'Are you sure?' } %>
+<% end %>
+</div>
 
 <%= link_to 'Back', users_path %>

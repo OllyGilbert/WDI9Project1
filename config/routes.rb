@@ -21,6 +21,10 @@ GaSchedulePlanner::Application.routes.draw do
 
   get "/events/:id", to: "courses#show"
 
+  resources :posts do
+    get 'page/:page', action: :index, on: :collection
+  end
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

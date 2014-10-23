@@ -7,7 +7,7 @@ class ClassroomsController < ApplicationController
     @classrooms = @q.result(distinct: true)
     @q.build_condition
 
-    #@classrooms = Classroom.all
+    @classrooms = Classroom.order(:created_at).page(params[:page])
 
     respond_to do |format|
       format.html # index.html.erb

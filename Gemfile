@@ -7,6 +7,8 @@ gem 'rails', '3.2.19'
 
 gem 'pg'
 gem 'ransack', '~> 1.4.1'
+gem 'kaminari'
+gem 'bootstrap-kaminari-views'
 
 group :development, :test do
   gem 'pry-rails'

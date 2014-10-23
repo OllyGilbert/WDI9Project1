@@ -37,5 +37,8 @@ class Course < ActiveRecord::Base
     end
   end
 
+  def available_instructors
+    
+
 
 end

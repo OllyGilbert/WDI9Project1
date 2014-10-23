@@ -7,6 +7,18 @@ class Ability
         can :manage, :all
     elsif user.role? :instructor
         can :update, :course
+        can :read, User
+        can :read, Location
+        can :read, Course
+        can :read, Programme
+        can :read, Classroom
+        can :create, User
+        can :update, User, [:name, :email, :password] do |current_user|
+          current_user.id == user.id
+        end
+        can :destroy, User do |current_user|
+          current_user.id == user.id
+        end
     else
         can :read, User
         can :read, Location
