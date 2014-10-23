@@ -1,12 +1,13 @@
 class ClassroomsController < ApplicationController
   # GET /classrooms
   # GET /classrooms.json
-  # authorize_resource
+  authorize_resource
   def index
-    # @q = Classroom.search(params[:q])
-    # @classrooms = @q.result(distinct: true)
-    # @q.build_condition
-    @classrooms = Classroom.order(:created_at).page(params[:page])
+    @q = Classroom.search(params[:q])
+    @classrooms = @q.result(distinct: true).order(:created_at).page(params[:page])
+    @q.build_condition
+
+    #@classrooms = Classroom.order(:created_at).page(params[:page])
 
     respond_to do |format|
       format.html # index.html.erb

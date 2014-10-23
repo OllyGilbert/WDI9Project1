@@ -1,11 +1,13 @@
 class CoursesController < ApplicationController
   # GET /courses
   # GET /courses.json
-  # authorize_resource
+  authorize_resource
   def index
     @q = Course.search(params[:q])
-    @courses = @q.result(distinct: true)
+    @courses = @q.result(distinct: true).order(:created_at).page(params[:page])
     @q.build_condition
+
+    #@courses = Course.order(:created_at).page(params[:page])
 
     respond_to do |format|
       format.html # index.html.erb

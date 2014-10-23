@@ -1,11 +1,13 @@
 class ProgrammesController < ApplicationController
   # GET /programmes
   # GET /programmes.json
-  # authorize_resource
+  authorize_resource
   def index
     @q = Programme.search(params[:q])
-    @programmes = @q.result(distinct: true)
+    @programmes = @q.result(distinct: true).order(:created_at).page(params[:page])
     @q.build_condition
+
+    #@programmes = Programme.order(:created_at).page(params[:page])
 
     respond_to do |format|
       format.html # index.html.erb

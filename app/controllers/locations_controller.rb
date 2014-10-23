@@ -1,11 +1,13 @@
 class LocationsController < ApplicationController
   # GET /locations
   # GET /locations.json
-  # authorize_resource
+  authorize_resource
   def index
     @q = Location.search(params[:q])
-    @locations = @q.result(distinct: true)
+    @locations = @q.result(distinct: true).order(:created_at).page(params[:page])
     @q.build_condition
+
+    # @locations = Location.order(:created_at).page(params[:page])
 
     respond_to do |format|
       format.html # index.html.erb

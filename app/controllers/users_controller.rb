@@ -5,10 +5,10 @@ class UsersController < ApplicationController
 
   def index
     @q = User.search(params[:q])
-    @users = @q.result(distinct: true)
+    @users = @q.result(distinct: true).order(:created_at).page(params[:page])
     @q.build_condition
 
-    @users = User.order(:created_at).page(params[:page])
+    #@users = User.order(:created_at).page(params[:page])
 
     respond_to do |format|
       format.html # index.html.erb
