@@ -76,6 +76,7 @@ class CoursesController < ApplicationController
     @course = Course.find(params[:id])
     #If no course passed in params, make sure reassigned to nil
     @course.classroom_id = nil
+    @course.instructors = []
     respond_to do |format|
       if @course.update_attributes(params[:course])
         

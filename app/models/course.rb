@@ -38,7 +38,30 @@ class Course < ActiveRecord::Base
   end
 
   def available_instructors
+    #Select all the courses that start in the range of new course dates
+    course_start = Course.where(
+      genre: self.genre,
+      start_at: (self.start_at..self.end_at)
+    ) 
+    #Select all the courses that end in the range of new course dates
+    course_end = Course.where(
+      genre: self.genre,
+      end_at: (self.start_at..self.end_at)
+    )
+   
+    #Add results together, reject the current course and map course ids
+    overlapping_course_ids = (course_start + course_end).reject{|course| course.id == self.id}
     
+    if overlapping_course_ids
+      overlapping_instructor_ids_map = overlapping_course_ids.map {|course| course.instructors}.flatten.map(&:id)
+      #Removing all of the unavailable instructors from the instructors array;
+      available_instructors = User.where(role: 'instructor').reject do |user|
+        overlapping_instructor_ids_map.include? user.id
+      end
+    else
+      User.where(role: 'instructor')
+    end
+  end 
 
 
 end

@@ -11,7 +11,9 @@ GaSchedulePlanner::Application.routes.draw do
 
   resources :programmes
 
-  resources :classrooms
+  resources :classrooms do
+    get 'page/:page', action: :index, on: :collection
+  end
 
   resources :locations
 
@@ -20,10 +22,6 @@ GaSchedulePlanner::Application.routes.draw do
   match '/calendar(/:year(/:month))' => 'calendar#index', :as => :calendar, :constraints => {:year => /\d{4}/, :month => /\d{1,2}/}
 
   get "/events/:id", to: "courses#show"
-
-  resources :posts do
-    get 'page/:page', action: :index, on: :collection
-  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

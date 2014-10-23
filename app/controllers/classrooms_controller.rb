@@ -3,10 +3,9 @@ class ClassroomsController < ApplicationController
   # GET /classrooms.json
   # authorize_resource
   def index
-    @q = Classroom.search(params[:q])
-    @classrooms = @q.result(distinct: true)
-    @q.build_condition
-
+    # @q = Classroom.search(params[:q])
+    # @classrooms = @q.result(distinct: true)
+    # @q.build_condition
     @classrooms = Classroom.order(:created_at).page(params[:page])
 
     respond_to do |format|
