@@ -6,18 +6,27 @@ GaSchedulePlanner::Application.routes.draw do
 
   get 'logout', to: 'sessions#destroy', as: 'logout'
 
-  resources :courses
+  resources :courses do
+    get 'page/:page', action: :index, on: :collection
+  end
+
   post '/courses/:id/update_classroom_instructor', to: 'courses#update_classroom_instructor', as: 'update_classroom_instructor'
 
-  resources :programmes
+  resources :programmes do
+    get 'page/:page', action: :index, on: :collection
+  end
 
   resources :classrooms do
     get 'page/:page', action: :index, on: :collection
   end
 
-  resources :locations
+  resources :locations do
+    get 'page/:page', action: :index, on: :collection
+  end
 
-  resources :users
+  resources :users do
+    get 'page/:page', action: :index, on: :collection
+  end
 
   match '/calendar(/:year(/:month))' => 'calendar#index', :as => :calendar, :constraints => {:year => /\d{4}/, :month => /\d{1,2}/}
 

@@ -26,7 +26,7 @@ class Ability
         can :read, Programme
         can :read, Classroom
         can :create, User
-        can :update, User do |current_user|
+        can :update, User, [:name, :email, :password] do |current_user|
           current_user.id == user.id
         end
         can :destroy, User do |current_user|

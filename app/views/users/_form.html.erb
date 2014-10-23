@@ -21,14 +21,16 @@
     <%= f.text_field :email %>
   </div>
 
-  <div class="field">
-    <%= f.radio_button(:role, "producer") %>
-    <%= f.label(:role, "producer") %>
-    <%= f.radio_button(:role, "instructor") %>
-    <%= f.label(:role, "instructor") %>
-    <%= f.radio_button(:role, "student") %>
-    <%= f.label(:role, "student") %>
-  </div>
+  <% if current_user.role == 'producer' %>
+    <div class="field">
+      <%= f.radio_button(:role, "producer") %>
+      <%= f.label(:role, "producer") %>
+      <%= f.radio_button(:role, "instructor") %>
+      <%= f.label(:role, "instructor") %>
+      <%= f.radio_button(:role, "student") %>
+      <%= f.label(:role, "student") %>
+    </div>
+  <% end %>
 
   <div class="field">
       <%= f.label :password %>
