@@ -7,6 +7,7 @@ GaSchedulePlanner::Application.routes.draw do
   get 'logout', to: 'sessions#destroy', as: 'logout'
 
   resources :courses
+  post '/courses/:id/update_classroom_instructor', to: 'courses#update_classroom_instructor', as: 'update_classroom_instructor'
 
   resources :programmes
 

@@ -1,7 +1,7 @@
 class ClassroomsController < ApplicationController
   # GET /classrooms
   # GET /classrooms.json
-  authorize_resource
+  # authorize_resource
   def index
     @q = Classroom.search(params[:q])
     @classrooms = @q.result(distinct: true)
@@ -62,7 +62,6 @@ class ClassroomsController < ApplicationController
   # PUT /classrooms/1.json
   def update
     @classroom = Classroom.find(params[:id])
-
     respond_to do |format|
       if @classroom.update_attributes(params[:classroom])
         format.html { redirect_to @classroom, notice: 'Classroom was successfully updated.' }

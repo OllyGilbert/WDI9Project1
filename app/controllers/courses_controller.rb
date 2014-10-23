@@ -1,7 +1,7 @@
 class CoursesController < ApplicationController
   # GET /courses
   # GET /courses.json
-  authorize_resource
+  # authorize_resource
   def index
     @q = Course.search(params[:q])
     @courses = @q.result(distinct: true)
@@ -62,6 +62,23 @@ class CoursesController < ApplicationController
 
     respond_to do |format|
       if @course.update_attributes(params[:course])
+
+        format.html { render action: "populate_course", notice: 'Course was successfully updated.' }
+        format.json { head :no_content }
+      else
+        format.html { render action: "edit" }
+        format.json { render json: @course.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def update_classroom_instructor
+    @course = Course.find(params[:id])
+    #If no course passed in params, make sure reassigned to nil
+    @course.classroom_id = nil
+    respond_to do |format|
+      if @course.update_attributes(params[:course])
+        
         format.html { redirect_to @course, notice: 'Course was successfully updated.' }
         format.json { head :no_content }
       else

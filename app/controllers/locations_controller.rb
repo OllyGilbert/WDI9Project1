@@ -1,7 +1,7 @@
 class LocationsController < ApplicationController
   # GET /locations
   # GET /locations.json
-  authorize_resource
+  # authorize_resource
   def index
     @q = Location.search(params[:q])
     @locations = @q.result(distinct: true)

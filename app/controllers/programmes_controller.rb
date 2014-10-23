@@ -1,7 +1,7 @@
 class ProgrammesController < ApplicationController
   # GET /programmes
   # GET /programmes.json
-  authorize_resource
+  # authorize_resource
   def index
     @q = Programme.search(params[:q])
     @programmes = @q.result(distinct: true)
