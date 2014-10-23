@@ -12,11 +12,10 @@
   <% end %>
 
   <div>
+    <dt>Select programme</dt>
+    <dl>
     <%= f.collection_select :programme_id, Programme.all, :id, :name %>
-  </div>
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
+    </dl>
   </div>
 
   <div class="field">
@@ -27,6 +26,13 @@
     <%= f.radio_button(:genre, "weekend") %>
     <%= f.label(:genre, "weekend") %>
   </div>
+  
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+
+
 
   <div class="field">
     <%= f.label :start_at %><br />

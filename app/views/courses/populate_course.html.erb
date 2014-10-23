@@ -14,23 +14,36 @@
   <div>
     <dt>Select instructors</dt>
     <dl>
-     <% @course.available_instructors.each do |instructor| %>
-       <%= check_box_tag "course[instructor_ids][]", instructor.id, @course.instructors.include?(instructor), id: "course_instructor_ids_#{instructor.id}" %>
-       <%= f.label :instructor_ids, instructor.name, for: "course_instructor_ids_#{instructor.id}" %>
+      <% if @course.available_instructors.size > 0 %>
+        <% @course.available_instructors.each do |instructor| %>
+          <%= check_box_tag "course[instructor_ids][]", instructor.id, @course.instructors.include?(instructor), id: "course_instructor_ids_#{instructor.id}" %>
+          <%= f.label :instructor_ids, instructor.name, for: "course_instructor_ids_#{instructor.id}" %>
+        <% end %>
+      <% else %>
+        <p>no instructors are available</p>
      <% end %>
     </dl>
   </div>
 
   <div>
+    <dt>Select students</dt>
+    <dl>
      <% User.where(role: 'student').each do |student| %>
        <%= check_box_tag "course[student_ids][]", student.id, @course.students.include?(student), id: "course_student_ids_#{student.id}" %>
        <%= f.label :student_ids, student.name, for: "course_student_ids_#{student.id}" %>
      <% end %>
+    </dl>
 
-  <div class="field">
-     <%= f.collection_select :classroom_id, @course.available_classrooms, :id, :name %>
+  <div>
+    <dt>Select classroom</dt>
+    <% if @course.available_classrooms.size > 0 %>
+      <div class="field">
+         <%= f.collection_select :classroom_id, @course.available_classrooms, :id, :name %>
+      </div>
+    <% else %>
+      <p>no classrooms are available</p>
+    <% end %>
   </div>
-
   <div class="actions">
     <%= f.submit %>
   </div>
