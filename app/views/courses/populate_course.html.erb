@@ -12,10 +12,13 @@
   <% end %>
 
   <div>
+    <dt>Select instructors</dt>
+    <dl>
      <% @course.available_instructors.each do |instructor| %>
        <%= check_box_tag "course[instructor_ids][]", instructor.id, @course.instructors.include?(instructor), id: "course_instructor_ids_#{instructor.id}" %>
        <%= f.label :instructor_ids, instructor.name, for: "course_instructor_ids_#{instructor.id}" %>
      <% end %>
+    </dl>
   </div>
 
   <div>
