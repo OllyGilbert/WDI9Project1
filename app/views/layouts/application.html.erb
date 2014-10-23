@@ -59,25 +59,6 @@
     <%= yield %>
   </main>
 
-   <div class="search">
-    <%= search_form_for @q do |f| %> 
-        <%= f.condition_fields do |c|%>
-          <div class="field">
-          <%= c.attribute_fields do |a| %> 
-              <%= a.attribute_select %>
-          <% end %>
-          <%= c.predicate_select %> 
-            <%= c.value_fields do |v| %>
-              <%= v.text_field :value %>
-            <% end %>
-          </div>
-          <% end %>
-        <%= f.submit %>
-      <% end %>
-    </div>
-
-
-
   <footer></footer>
 
 </body>
