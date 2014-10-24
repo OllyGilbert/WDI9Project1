@@ -1,1 +1,17 @@
-<p>put something else here</p>
+
+<ul>
+  <% if current_user %>
+  <li class = "user">Hello <%= current_user.name %>, welcome to GA scheduler</li>
+  <li class = "user">
+    <%= link_to 'Show profile!', current_user %>
+  </li>
+  <li class = "user">
+    <%= link_to 'Sign out', logout_path %>
+  </li>
+  <% else %>
+  <li class = "user">
+    Welcome to GA scheduler, please sign in
+    <%= link_to 'Sign in!', new_session_path %>
+  </li>
+  <% end %>
+</ul>

@@ -12,7 +12,7 @@
   <% end %>
 
   <div>
-    <dt>Select instructors</dt>
+    <dt class = "form">Select instructors</dt>
     <dl>
       <% if @course.available_instructors.size > 0 %>
         <% @course.available_instructors.each do |instructor| %>
@@ -20,13 +20,13 @@
           <%= f.label :instructor_ids, instructor.name, for: "course_instructor_ids_#{instructor.id}" %>
         <% end %>
       <% else %>
-        <p>no instructors are available</p>
+        <p class = "nil">no instructors are available</p>
      <% end %>
     </dl>
   </div>
 
   <div>
-    <dt>Select students</dt>
+    <dt class = "form">Select students</dt>
     <dl>
      <% User.where(role: 'student').each do |student| %>
        <%= check_box_tag "course[student_ids][]", student.id, @course.students.include?(student), id: "course_student_ids_#{student.id}" %>
@@ -41,7 +41,7 @@
          <%= f.collection_select :classroom_id, @course.available_classrooms, :id, :name %>
       </div>
     <% else %>
-      <p>no classrooms are available</p>
+      <p class = "form">no classrooms are available</p>
     <% end %>
   </div>
   <div class="actions">
