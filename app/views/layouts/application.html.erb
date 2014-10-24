@@ -10,9 +10,12 @@
 </head>
 <body>
   <header>
-    <nav>
+    <h1 class = "h5bp" >GA Scheduler</h1>
+    <nav class = "main">
       <ul>
-        <li>GA Scheduler</li>
+        <li>
+          <%=link_to 'GA Scheduler', welcome_index_path%>
+        </li>
         <li>
           <%=link_to 'locations', locations_path %>
         </li>
@@ -32,19 +35,18 @@
           <%=link_to 'calendar', calendar_path %>
         </li>
         <% if current_user %>
-        <li>hello <%= current_user.email %></li>
-        <li>
+        <li class = "user">hello <%= current_user.name %></li>
+        <li class = "user">
           <%= link_to 'Show profile!', current_user %>
         </li>
-        <li>
+        <li class = "user">
           <%= link_to 'Sign out', logout_path %>
         </li>
       <% else %>
-        <li>
+        <li class = "user">
           <%= link_to 'Sign in!', new_session_path %>
         </li>
       <% end %>
-        
       </ul>
     </nav>
   </header>
