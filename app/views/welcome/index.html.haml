@@ -1,0 +1,12 @@
+%ul
+  - if current_user
+    %li.user
+      Hello #{current_user.name}, welcome to GA scheduler
+    %li.user
+      = link_to 'Show profile!', current_user
+    %li.user
+      = link_to 'Sign out', logout_path
+  - else
+    %li.user
+      Welcome to GA scheduler, please sign in
+      \#{link_to 'Sign in!', new_session_path}

@@ -1,0 +1,32 @@
+%h1 GA programmes
+.search
+  = search_form_for @q do |f|
+    = f.condition_fields do |c|
+      .field
+        = c.attribute_fields do |a|
+          = a.attribute_select
+        = c.predicate_select
+        = c.value_fields do |v|
+          = v.text_field :value
+    = f.submit
+%table
+  %tr
+    %th Name
+    %th
+    %th
+    %th
+  - @programmes.each do |programme|
+    %tr
+      %td= programme.name
+      %td
+        - if can? :show, programme
+          = link_to 'Show', programme
+      %td
+        - if can? :update, programme
+          = link_to 'Edit', edit_programme_path(programme)
+      %td
+        - if can? :destroy, programme
+          = link_to 'Destroy', programme, method: :delete, data: { confirm: 'Are you sure?' }
+%br/
+= link_to 'New Programme', new_programme_path
+= paginate @programmes

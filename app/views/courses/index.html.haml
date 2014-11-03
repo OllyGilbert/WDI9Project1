@@ -1,0 +1,46 @@
+%h1 GA courses
+.search
+  = search_form_for @q do |f|
+    = f.condition_fields do |c|
+      .field
+        = c.attribute_fields do |a|
+          = a.attribute_select
+        = c.predicate_select
+        = c.value_fields do |v|
+          = v.text_field :value
+    = f.submit
+%table
+  %tr
+    %th Name
+    %th Start at
+    %th End at
+    %th Type
+    %th Programme
+    %th Classroom
+    %th Price
+    %th Description
+    %th
+    %th
+    %th
+  - @courses.each do |course|
+    %tr
+      %td= course.name
+      %td= course.start_at
+      %td= course.end_at
+      %td= course.genre
+      %td= course.programme_id
+      %td= course.classroom_id
+      %td= course.price
+      %td= course.description
+      %td
+        - if can? :show, course
+          = link_to 'Show', course
+      %td
+        - if can? :update, course
+          = link_to 'Edit', edit_course_path(course)
+      %td
+        - if can? :destroy, course
+          = link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' }
+%br/
+= paginate @courses
+= link_to 'New Course', new_course_path

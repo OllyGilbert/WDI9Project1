@@ -1,0 +1,43 @@
+= form_for(@course) do |f|
+  - if @course.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@course.errors.count, "error")
+        prohibited this course from being saved:
+      %ul
+        - @course.errors.full_messages.each do |msg|
+          %li= msg
+  %div
+    %dt Select programme
+    %dl
+      = f.collection_select :programme_id, Programme.all, :id, :name
+  .field
+    = f.radio_button(:genre, "immersive")
+    = f.label(:genre, "immersive")
+    = f.radio_button(:genre, "evening")
+    = f.label(:genre, "evening")
+    = f.radio_button(:genre, "weekend")
+    = f.label(:genre, "weekend")
+  .field
+    = f.label :name
+    %br/
+    = f.text_field :name
+  .field
+    = f.label :start_at
+    %br/
+    = f.datetime_select :start_at
+  .field
+    = f.label :end_at
+    %br/
+    = f.datetime_select :end_at
+  .field
+    §
+    \#{f.label :price}
+    %br/
+    = f.text_field :price
+  .field
+    = f.label :description
+    %br/
+    = f.text_area :description
+  .actions
+    = f.submit

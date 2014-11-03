@@ -1,0 +1,71 @@
+$gray: grey;
+$color_ironside_gray_approx: #686868;
+$color_bon_jour_approx: #e0e0e0;
+$white: #ffffff;
+$black: #000000;
+
+%extend_1 {
+  display: block;
+  width: 120px;
+  font-weight: bold;
+  color: $color_ironside_gray_approx;
+  background-color: #E0E0E0;
+  text-align: center;
+  padding: 4px;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+
+header {
+  background: $gray;
+  height: 160px;
+}
+h1 {
+  display: inline-block;
+  &.h5bp {
+    border: 0;
+    font: 0/0 a;
+    text-shadow: none;
+    color: transparent;
+    background: url(https://ga-core-production-herokuapp-com.global.ssl.fastly.net/assets/ga-lockup-61c4920d0981703871ab3256bc786a2f.png);
+    width: 880px;
+    height: 95px;
+  }
+}
+a {
+  &:visited {
+    @extend %extend_1;
+  }
+  &:active {
+    background-color: #FFFFFF;
+  }
+}
+.hello {
+  display: block;
+  width: 120px;
+  font-weight: bold;
+  color: #FFFFFF;
+  background-color: $black;
+  text-align: center;
+  padding: 4px;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  li {
+    float: left;
+    a {
+      &:link {
+        @extend %extend_1;
+      }
+      &:hover {
+        background-color: #FFFFFF;
+      }
+    }
+  }
+}

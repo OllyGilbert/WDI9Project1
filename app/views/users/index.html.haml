@@ -1,0 +1,34 @@
+%h1 GA users
+.search
+  = search_form_for @q do |f|
+    = f.condition_fields do |c|
+      .field
+        = c.attribute_fields do |a|
+          = a.attribute_select
+        = c.predicate_select
+        = c.value_fields do |v|
+          = v.text_field :value
+    = f.submit
+%table
+  %tr
+    %th Name
+    %th Role
+    %th
+    %th
+    %th
+  - @users.each do |user|
+    %tr
+      %td= user.name
+      %td= user.role
+      %td
+        - if can? :show, user
+          = link_to 'Show', user
+      %td
+        - if can? :update, user
+          = link_to 'Edit', edit_user_path(user)
+      %td
+        - if can? :destroy, user
+          = link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' }
+%br/
+= paginate @users
+= link_to 'New User', new_user_path

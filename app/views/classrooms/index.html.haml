@@ -1,0 +1,36 @@
+%h1 GA classrooms
+.search
+  = search_form_for @q do |f|
+    = f.condition_fields do |c|
+      .field
+        = c.attribute_fields do |a|
+          = a.attribute_select
+        = c.predicate_select
+        = c.value_fields do |v|
+          = v.text_field :value
+    = f.submit
+%table
+  %tr
+    %th Name
+    %th Location
+    %th Capacity
+    %th
+    %th
+    %th
+  - @classrooms.each do |classroom|
+    %tr
+      %td= classroom.name
+      %td= classroom.location_id
+      %td= classroom.capacity
+      %td
+        - if can? :show, classroom
+          = link_to 'Show', classroom
+      %td
+        - if can? :update, classroom
+          = link_to 'Edit', edit_classroom_path(classroom)
+      %td
+        - if can? :destroy, classroom
+          = link_to 'Destroy', classroom, method: :delete, data: { confirm: 'Are you sure?' }
+%br/
+= paginate @classrooms
+= link_to 'New Classroom', new_classroom_path

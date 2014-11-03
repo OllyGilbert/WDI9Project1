@@ -1,0 +1,10 @@
+%p#notice= notice
+%p
+  %b Name:
+  = @programme.name
+%p
+  %b Description:
+  = @programme.description
+= link_to 'Edit', edit_programme_path(@programme)
+|
+\#{link_to 'Back', programmes_path}

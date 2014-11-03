@@ -1,0 +1,13 @@
+%p#notice= notice
+%p
+  %b Name:
+  = @classroom.name
+%p
+  %b Location:
+  = @classroom.location_id
+%p
+  %b Capacity:
+  = @classroom.capacity
+= link_to 'Edit', edit_classroom_path(@classroom)
+|
+\#{link_to 'Back', classrooms_path}

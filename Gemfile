@@ -9,6 +9,8 @@ gem 'pg'
 gem 'ransack', '~> 1.4.1'
 gem 'kaminari'
 gem 'bootstrap-kaminari-views'
+gem 'haml'
+gem 'haml-rails'
 
 group :development, :test do
   gem 'pry-rails'

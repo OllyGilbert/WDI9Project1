@@ -1,0 +1,36 @@
+%h1 GA locations
+.search
+  = search_form_for @q do |f|
+    = f.condition_fields do |c|
+      .field
+        = c.attribute_fields do |a|
+          = a.attribute_select
+        = c.predicate_select
+        = c.value_fields do |v|
+          = v.text_field :value
+    = f.submit
+%table
+  %tr
+    %th Name
+    %th Address
+    %th City
+    %th
+    %th
+    %th
+  - @locations.each do |location|
+    %tr
+      %td= location.name
+      %td= location.address
+      %td= location.city
+      %td
+        - if can? :show, location
+          = link_to 'Show', location
+      %td
+        - if can? :update, location
+          = link_to 'Edit', edit_location_path(location)
+      %td
+        - if can? :destroy, location
+          = link_to 'Destroy', location, method: :delete, data: { confirm: 'Are you sure?' }
+%br/
+= paginate @locations
+= link_to 'New Location', new_location_path
